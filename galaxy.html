@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MD's World | Galaxy Explorer</title>
+
+    <link rel="stylesheet" href="galaxy.css">
+</head>
+
+<body>
+
+    <!-- Animated star background -->
+    <canvas id="starCanvas"></canvas>
+
+    <!-- Main navigation -->
+    <header class="topbar">
+
+        <div class="logo">MD<span>.</span></div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            GALAXY ONLINE
+        </div>
+      
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro">
+
+        <p class="eyebrow">WELCOME TO THE UNKNOWN</p>
+
+        <h1>
+            Welcome aboard,
+            <span id="visitorName">Explorer</span>.
+        </h1>
+
+        <p>
+            An entire universe awaits.
+            Choose your destination and explore.
+        </p>
+
+    </section>
+
+    <!-- Galaxy viewport -->
+    <main class="galaxy-viewport" id="viewport">
+
+        <div class="galaxy-world" id="galaxyWorld">
+
+            <!-- Planet 1 -->
+            <button class="planet sakaar"
+                data-name="Sakaar"
+                data-description="A chaotic world full of unexpected adventures."
+                data-destination="sakaar.html">
+
+                <span class="planet-sphere"></span>
+                <span class="planet-label">SAKAAR</span>
+
+            </button>
+
+            <!-- Planet 2 -->
+            <button class="planet xandar"
+                data-name="Xandar"
+                data-description="Discover the home of the Nova Corps."
+                data-destination="xandar.html">
+
+                <span class="planet-sphere"></span>
+                <span class="planet-label">XANDAR</span>
+
+            </button>
+
+            <!-- Planet 3 -->
+            <button class="planet titan"
+                data-name="Titan"
+                data-description="A mysterious world of cosmic history."
+                data-destination="titan.html">
+
+                <span class="planet-sphere"></span>
+                <span class="planet-label">TITAN</span>
+
+            </button>
+
+            <!-- Planet 4 -->
+            <button class="planet vormir"
+                data-name="Vormir"
+                data-description="A distant and mysterious destination."
+                data-destination="vormir.html">
+
+                <span class="planet-sphere"></span>
+                <span class="planet-label">VORMIR</span>
+
+            </button>
+
+            <!-- Planet 5 -->
+            <button class="planet ego"
+                data-name="Ego"
+                data-description="A celestial mystery awaits discovery."
+                data-destination="ego.html">
+
+                <span class="planet-sphere"></span>
+                <span class="planet-label">EGO</span>
+
+            </button>
+
+            <!-- Planet 6 -->
+            <button class="planet knowhere"
+                data-name="Knowhere"
+                data-description="A remarkable destination at the edge of the galaxy."
+                data-destination="knowhere.html">
+
+                <span class="planet-sphere"></span>
+                <span class="planet-label">KNOWHERE</span>
+
+            </button>
+
+        </div>
+
+    </main>
+
+    <!-- Planet information -->
+    <div class="planet-panel" id="planetPanel">
+
+        <button class="close-panel" id="closePanel">×</button>
+
+        <p class="eyebrow">DESTINATION IDENTIFIED</p>
+
+        <h2 id="panelName">Planet Name</h2>
+
+        <p id="panelDescription"></p>
+
+        <button class="explore-btn" id="exploreBtn">
+            EXPLORE DESTINATION ↗
+        </button>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+
+        <button id="zoomIn">+</button>
+        <button id="zoomOut">−</button>
+        <button id="resetView">⌖</button>
+
+    </div>
+
+    <div class="instruction">
+        DRAG TO EXPLORE &nbsp; • &nbsp; SCROLL TO ZOOM
+    </div>
+
+    <footer>
+        <span>MD'S WORLD</span>
+        <span>THE UNIVERSE IS YOURS TO EXPLORE</span>
+    </footer>
+
+    <script src="galaxy.js"></script>
+
+</body>
+</html>

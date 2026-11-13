@@ -1,0 +1,485 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --bg: #050914;
+    --cyan: #00e5ff;
+    --blue: #287bff;
+    --text: #edf5ff;
+    --muted: #8998ad;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background-color: #02040b;
+    background-image:
+        linear-gradient(
+            rgba(2, 5, 15, 0.25),
+            rgba(2, 5, 15, 0.45)
+        ),
+        url("./assets/galaxy/backgrounds/deep-space.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden;
+}
+
+/* STAR CANVAS */
+
+#starCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* SPACE ATMOSPHERE */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            rgba(2, 5, 15, 0.35),
+            rgba(2, 5, 15, 0.55)
+        ),
+        url("./assets/galaxy/backgrounds/nebula-overlay.jpg")
+        center / cover no-repeat;
+
+    opacity: 0.75;
+}
+
+/* INTRO */
+
+.intro {
+    position: absolute;
+    top: 115px;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.intro h1 {
+    font-size: clamp(25px, 4vw, 42px);
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.intro h1 span {
+    color: var(--cyan);
+}
+
+.intro > p:last-child {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* GALAXY VIEWPORT */
+
+.galaxy-viewport {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+}
+
+.galaxy-viewport.dragging {
+    cursor: grabbing;
+}
+
+.galaxy-world {
+    width: 1800px;
+    height: 1200px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center;
+
+    transition: none;
+}
+
+/* PLANETS */
+
+.planet {
+    position: absolute;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
+
+    color: white;
+    transition: filter 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.planet-sphere {
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    position: relative;
+
+    background:
+        radial-gradient(circle at 30% 25%,
+            var(--light), transparent 24%),
+        radial-gradient(circle at 65% 70%,
+            var(--dark), transparent 60%),
+        var(--color);
+
+    box-shadow:
+        inset -15px -15px 30px rgba(0,0,0,0.7),
+        0 0 35px var(--glow);
+
+    animation: planetFloat 5s ease-in-out infinite alternate;
+}
+
+.planet-sphere::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(255,255,255,0.15),
+        transparent 70%
+    );
+}
+
+.planet:hover .planet-sphere {
+    box-shadow:
+        inset -15px -15px 30px rgba(0,0,0,0.6),
+        0 0 65px var(--glow);
+}
+
+.planet-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #cbd9ed;
+    text-shadow: 0 0 10px var(--glow);
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.planet:hover .planet-label {
+    color: var(--cyan);
+    opacity: 1;
+}
+
+@keyframes planetFloat {
+    from { transform: translateY(-8px); }
+    to { transform: translateY(8px); }
+}
+
+/* PLANET POSITIONS */
+
+.sakaar {
+    --size: 135px;
+    --color: #b76b3e;
+    --light: #ffcb83;
+    --dark: #592a28;
+    --glow: rgba(255,130,70,0.45);
+
+    left: 250px;
+    top: 260px;
+}
+
+.xandar {
+    --size: 100px;
+    --color: #346ca5;
+    --light: #a1e6ff;
+    --dark: #142b5a;
+    --glow: rgba(0,160,255,0.45);
+
+    left: 760px;
+    top: 400px;
+}
+
+.titan {
+    --size: 165px;
+    --color: #956b87;
+    --light: #d8b3d0;
+    --dark: #302039;
+    --glow: rgba(170,100,180,0.45);
+
+    left: 1250px;
+    top: 230px;
+}
+
+.vormir {
+    --size: 90px;
+    --color: #a94239;
+    --light: #ffac78;
+    --dark: #481b24;
+    --glow: rgba(255,70,50,0.45);
+
+    left: 500px;
+    top: 800px;
+}
+
+.ego {
+    --size: 145px;
+    --color: #d29c48;
+    --light: #fff0a0;
+    --dark: #5b301e;
+    --glow: rgba(255,180,70,0.4);
+
+    left: 1050px;
+    top: 820px;
+}
+
+.knowhere {
+    --size: 115px;
+    --color: #8e5caa;
+    --light: #e0a7ff;
+    --dark: #29183d;
+    --glow: rgba(180,80,255,0.4);
+
+    left: 1510px;
+    top: 670px;
+}
+
+/* INFORMATION PANEL */
+
+.planet-panel {
+    position: absolute;
+    z-index: 30;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+
+    width: min(90%, 360px);
+    padding: 25px;
+
+    background: rgba(10,20,36,0.95);
+    border: 1px solid rgba(0,229,255,0.3);
+    border-radius: 12px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    backdrop-filter: blur(15px);
+}
+
+.planet-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.planet-panel h2 {
+    margin-top: 12px;
+    color: var(--cyan);
+    font-size: 26px;
+}
+
+.planet-panel p:not(.eyebrow) {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.close-panel {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.explore-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    background: var(--cyan);
+    border: none;
+    color: #07111c;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ZOOM CONTROLS */
+
+.controls {
+    position: absolute;
+    right: 35px;
+    bottom: 100px;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls button {
+    width: 42px;
+    height: 42px;
+    background: rgba(15,30,50,0.9);
+    border: 1px solid #29445e;
+    border-radius: 7px;
+    color: var(--cyan);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* INSTRUCTION */
+
+.instruction {
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #8295ad;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+/* FOOTER */
+
+footer {
+    position: absolute;
+    bottom: 15px;
+    left: 5%;
+    right: 5%;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #61748d;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1px;
+    pointer-events: none;
+}
+
+/* MOBILE */
+
+@media(max-width: 600px) {
+
+    .topbar {
+        padding: 20px 5%;
+    }
+
+    .system-status {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .intro {
+        top: 105px;
+        padding: 0 15px;
+    }
+
+    .intro h1 {
+        font-size: 27px;
+    }
+
+    .intro .eyebrow {
+        font-size: 8px;
+    }
+
+    .planet-panel {
+        bottom: 100px;
+    }
+
+    .controls {
+        right: 15px;
+        bottom: 110px;
+    }
+
+    .instruction {
+        bottom: 55px;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    footer {
+        font-size: 7px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    .planet-sphere {
+        animation: none;
+    }
+}
+
+
+/* =================================
+   CINEMATIC GALAXY BACKGROUND
+================================= */
+
+body {
+    background-color: #02040b;
+
+    background-image:
+        linear-gradient(
+            rgba(2, 5, 15, 0.48),
+            rgba(2, 5, 15, 0.62)
+        ),
+        url("./assets/galaxy/backgrounds/nebula-overlay.jpg"),
+        url("./assets/galaxy/backgrounds/deep-space.jpg");
+
+    background-position:
+        center,
+        center center,
+        center center;
+
+    background-size:
+        cover,
+        cover,
+        cover;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    background-blend-mode:
+        normal,
+        screen,
+        normal;
+}
+
+

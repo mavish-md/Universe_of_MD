@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD's World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <main class="container">
+
+        <div class="logo">MD<span>.</span></div>
+
+        <p class="top-text">A LITTLE DIFFERENT. A LITTLE UNEXPECTED.</p>
+
+        <h1>
+            Welcome to<br>
+            <span>MD's World.</span>
+        </h1>
+
+        <p class="subtitle">
+            A place where imagination has no limits
+            and ordinary is just too mainstream.
+        </p>
+
+        <div class="welcome-card" id="welcomeCard">
+
+            <div class="emoji">👀</div>
+
+            <h2>Hold on, stranger!</h2>
+
+            <p>
+                Before you explore my little universe,
+                tell me your name.<br> Don't say "Unknown User" 🤨
+                <br>
+                Don't worry, we won't use it to
+                name a planet.
+            </p>
+
+            <form id="nameForm">
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Your legendary name..."
+                    maxlength="30"
+                    autocomplete="given-name"
+                    required
+                >
+
+                <button type="submit">
+                    Enter My World <span>↗</span>
+                </button>
+            </form>
+
+            <p class="small-text">
+                Your identity will remains a mystery...🕵️‍♂️
+            </p>
+
+        </div>
+
+        <div class="greeting" id="greeting">
+            <div class="emoji">🎉</div>
+            <h2 id="greetingTitle"></h2>
+            <p>You've officially entered MD's World.</p>
+            <button onclick="location.reload()">
+                Explore Again ↗
+            </button>
+        </div>
+
+        <footer>
+            <span>2026 MD's World</span>
+            <span>Made with curiosity & caffeine ☕</span>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+  
