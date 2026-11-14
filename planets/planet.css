@@ -1,0 +1,342 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --cyan: #00e5ff;
+    --blue: #287bff;
+    --muted: #8b9bb2;
+    --panel: rgba(10, 20, 38, 0.78);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
+    color: #f1f7ff;
+    background: #050914;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+        radial-gradient(2px 2px at 10% 20%, #ffffff 50%, transparent 100%),
+        radial-gradient(1px 1px at 30% 70%, #ffffff 50%, transparent 100%),
+        radial-gradient(2px 2px at 75% 25%, #ffffff 50%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, #ffffff 50%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, #ffffff 50%, transparent 100%);
+    background-size: 240px 240px;
+    opacity: 0.55;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(22, 65, 120, 0.25),
+            transparent 60%
+        ),
+        radial-gradient(
+            ellipse at 85% 80%,
+            rgba(0, 229, 255, 0.06),
+            transparent 45%
+        );
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 23px 7%;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.13);
+    background: rgba(5, 9, 20, 0.65);
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.status {
+    color: var(--cyan);
+    font: 10px 'IBM Plex Mono', monospace;
+    letter-spacing: 2px;
+}
+
+main {
+    width: min(1100px, 90%);
+    margin: auto;
+    padding: 65px 0 55px;
+}
+
+.hero {
+    text-align: center;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font: 11px 'IBM Plex Mono', monospace;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: clamp(45px, 8vw, 88px);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+}
+
+.subtitle {
+    margin-top: 17px;
+    color: #a5b8d0;
+    font: 12px 'IBM Plex Mono', monospace;
+    letter-spacing: 2px;
+}
+
+.visual-stage {
+    position: relative;
+    height: 340px;
+    display: grid;
+    place-items: center;
+    margin: 15px auto 35px;
+    overflow: hidden;
+}
+
+.orbit {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(0, 229, 255, 0.17);
+    border-radius: 50%;
+    transform: rotateX(65deg);
+}
+
+.orbit.second {
+    width: 350px;
+    height: 350px;
+    border-color: rgba(40, 123, 255, 0.12);
+    transform: rotateX(65deg) rotateZ(35deg);
+}
+
+.planet-orb {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    background: var(--planet-surface);
+    box-shadow:
+        inset -25px -25px 45px rgba(0, 0, 0, 0.65),
+        inset 8px 5px 20px rgba(255, 255, 255, 0.16),
+        0 0 65px var(--planet-glow);
+    transition: filter 0.4s;
+}
+
+.planet-orb::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px solid var(--planet-glow);
+    opacity: 0.45;
+}
+
+.planet-orb.scanning {
+    filter: brightness(1.5);
+    animation: scanPulse 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes scanPulse {
+    from {
+        box-shadow: 0 0 25px var(--planet-glow);
+    }
+
+    to {
+        box-shadow: 0 0 100px var(--planet-glow);
+    }
+}
+
+.briefing-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 18px;
+}
+
+.panel {
+    padding: 25px;
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    background: var(--panel);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+}
+
+.panel-label {
+    color: var(--cyan);
+    font: 10px 'IBM Plex Mono', monospace;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.description {
+    color: #aabbd0;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.profile-list {
+    display: grid;
+    gap: 15px;
+}
+
+.profile-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+}
+
+.profile-item:last-child {
+    border: none;
+    padding-bottom: 0;
+}
+
+.profile-item span {
+    display: block;
+    color: var(--muted);
+    font: 10px 'IBM Plex Mono', monospace;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.profile-item strong {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.explorer {
+    margin-top: 25px;
+    color: #b7c7da;
+    font: 11px 'IBM Plex Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.explorer span {
+    color: var(--cyan);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.action-btn {
+    padding: 13px 22px;
+    border: 1px solid var(--cyan);
+    background: transparent;
+    color: var(--cyan);
+    font: 11px 'IBM Plex Mono', monospace;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.action-btn:hover:not(:disabled) {
+    background: var(--cyan);
+    color: #050914;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);
+}
+
+.action-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.scan-result {
+    min-height: 24px;
+    margin-top: 18px;
+    color: #a7c8db;
+    font: 11px 'IBM Plex Mono', monospace;
+    text-align: center;
+    line-height: 1.8;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    border-top: 1px solid rgba(0, 229, 255, 0.1);
+    color: #53647a;
+    font: 9px 'IBM Plex Mono', monospace;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 20px 5%;
+    }
+
+    main {
+        padding-top: 50px;
+    }
+
+    .briefing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .visual-stage {
+        height: 290px;
+    }
+
+    .planet-orb {
+        width: 155px;
+        height: 155px;
+    }
+
+    .orbit {
+        width: 235px;
+        height: 235px;
+    }
+
+    .orbit.second {
+        width: 290px;
+        height: 290px;
+    }
+
+    h1 {
+        letter-spacing: -2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

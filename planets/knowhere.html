@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sakaar | MD's World</title>
+
+    <link rel="stylesheet" href="planet.css">
+</head>
+
+<body data-planet="knowhere">
+
+    <header>
+        <div class="logo">
+            MD<span>.</span>
+        </div>
+
+        <div class="status">
+            DESTINATION CONNECTED
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <p class="eyebrow">
+                GALACTIC DESTINATION / FIELD DOSSIER
+            </p>
+
+            <h1 id="planetName">
+                Loading...
+            </h1>
+
+            <p class="subtitle" id="planetSubtitle"></p>
+
+        </section>
+
+        <section class="visual-stage">
+
+            <div class="orbit"></div>
+
+            <div class="orbit second"></div>
+
+            <div
+                class="planet-orb"
+                id="planetOrb"
+            ></div>
+
+        </section>
+
+        <section class="briefing-grid">
+
+            <div class="panel">
+
+                <p class="panel-label">
+                    DESTINATION BRIEFING
+                </p>
+
+                <p
+                    class="description"
+                    id="planetDescription"
+                ></p>
+
+            </div>
+
+            <div class="panel">
+
+                <p class="panel-label">
+                    LOCATION PROFILE
+                </p>
+
+                <div class="profile-list">
+
+                    <div class="profile-item">
+                        <span>WORLD TYPE</span>
+                        <strong id="planetType"></strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>ENVIRONMENT</span>
+                        <strong id="planetEnvironment"></strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>KNOWN FOR</span>
+                        <strong id="planetKnownFor"></strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <p class="explorer">
+            EXPLORER IDENTIFIED:
+            <span id="visitorName">Explorer</span>
+        </p>
+
+        <div class="actions">
+
+            <button
+                class="action-btn"
+                id="scanButton"
+            >
+                SCAN DESTINATION
+            </button>
+
+            <button
+                class="action-btn"
+                id="backToGalaxy"
+            >
+                ← RETURN TO GALAXY
+            </button>
+
+        </div>
+
+        <p
+            class="scan-result"
+            id="scanResult"
+            aria-live="polite"
+        ></p>
+
+    </main>
+
+    <footer>
+        MD'S WORLD • GALACTIC EXPLORATION SYSTEM
+    </footer>
+
+    <script src="planet.js"></script>
+
+</body>
+</html>
