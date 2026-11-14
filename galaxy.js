@@ -205,6 +205,7 @@ document.getElementById("resetView").addEventListener("click", function() {
 });
 
 
+
 // =================================
 // PLANET SELECTION
 // =================================
@@ -233,6 +234,9 @@ planets.forEach(planet => {
         panelDescription.textContent =
             planet.dataset.description;
 
+        // Save selected destination
+        panel.dataset.destination = planet.dataset.destination;
+
         panel.classList.add("active");
 
     });
@@ -240,7 +244,9 @@ planets.forEach(planet => {
 });
 
 
+// =================================
 // CLOSE PANEL
+// =================================
 
 document.getElementById("closePanel").addEventListener("click", function() {
 
@@ -255,22 +261,16 @@ document.getElementById("closePanel").addEventListener("click", function() {
 // EXPLORE DESTINATION
 // =================================
 
-exploreBtn.addEventListener("click", function() {
+exploreBtn.addEventListener("click", function () {
 
-    if (!selectedPlanet) return;
+    const destination = panel.dataset.destination;
 
-    const destination = selectedPlanet.dataset.destination;
+    if (!destination) {
+        alert("Destination not found!");
+        return;
+    }
 
-    // Planet pages will be added later.
-    // For now, show a construction message.
-
-    alert(
-        selectedPlanet.dataset.name +
-        " is currently under construction! 🚀"
-    );
-
-    // Later we will replace this alert with:
-    // window.location.href = "planets/" + destination;
+    window.location.href = "planets/" + destination + ".html";
 
 });
 
