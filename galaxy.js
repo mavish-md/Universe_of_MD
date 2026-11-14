@@ -257,6 +257,7 @@ document.getElementById("closePanel").addEventListener("click", function() {
 });
 
 
+
 // =================================
 // EXPLORE DESTINATION
 // =================================
@@ -270,9 +271,15 @@ exploreBtn.addEventListener("click", function () {
         return;
     }
 
-    window.location.href = "planets/" + destination + ".html";
+    // Prevent duplicate .html extension
+    const fileName = destination.endsWith(".html")
+        ? destination
+        : destination + ".html";
+
+    window.location.href = "planets/" + fileName;
 
 });
+
 
 
 // =================================
