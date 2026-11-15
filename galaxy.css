@@ -1,5 +1,7 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+/* =================================
+   MD'S WORLD - GALAXY EXPLORER
+================================= */
 
 :root {
     --bg: #050914;
@@ -15,69 +17,107 @@
     box-sizing: border-box;
 }
 
+
+/* =================================
+   BODY & DEEP SPACE BACKGROUND
+================================= */
+
 body {
     min-height: 100vh;
+    position: relative;
 
-    background-color: #02040b;
-    background-image:
-        linear-gradient(
-            rgba(2, 5, 15, 0.25),
-            rgba(2, 5, 15, 0.45)
-        ),
-        url("./assets/galaxy/backgrounds/deep-space.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #02040b;
 
     color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
+
     overflow: hidden;
 }
 
-/* STAR CANVAS */
+
+/* =================================
+   ANIMATED STARFIELD
+================================= */
 
 #starCanvas {
     position: fixed;
     inset: 0;
+
     width: 100%;
     height: 100%;
-    z-index: -2;
-}
 
-/* SPACE ATMOSPHERE */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+    z-index: 1;
     pointer-events: none;
-    z-index: -1;
-
-    background:
-        linear-gradient(
-            rgba(2, 5, 15, 0.35),
-            rgba(2, 5, 15, 0.55)
-        ),
-        url("./assets/galaxy/backgrounds/nebula-overlay.jpg")
-        center / cover no-repeat;
-
-    opacity: 0.75;
 }
 
-/* INTRO */
+
+/* =================================
+   TOP NAVIGATION
+================================= */
+
+.topbar {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 25px 5%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    color: white;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #a5b7ce;
+
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    background: #00ff9d;
+    border-radius: 50%;
+
+    box-shadow: 0 0 10px #00ff9d;
+}
+
+
+/* =================================
+   INTRODUCTION
+================================= */
 
 .intro {
     position: absolute;
     top: 115px;
+
     width: 100%;
     text-align: center;
+
     z-index: 5;
     pointer-events: none;
 }
 
 .eyebrow {
     color: var(--cyan);
+
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
     letter-spacing: 4px;
@@ -99,12 +139,19 @@ body::before {
     margin-top: 12px;
 }
 
-/* GALAXY VIEWPORT */
+
+/* =================================
+   GALAXY VIEWPORT
+================================= */
 
 .galaxy-viewport {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
+
+    z-index: 2;
+
     cursor: grab;
     touch-action: none;
 }
@@ -113,11 +160,17 @@ body::before {
     cursor: grabbing;
 }
 
+
+/* =================================
+   GALAXY WORLD
+================================= */
+
 .galaxy-world {
     width: 1800px;
     height: 1200px;
 
     position: absolute;
+
     left: 50%;
     top: 50%;
 
@@ -127,36 +180,53 @@ body::before {
     transition: none;
 }
 
-/* PLANETS */
+
+/* =================================
+   PLANETS
+================================= */
 
 .planet {
     position: absolute;
+
     border: none;
     background: transparent;
+
     cursor: pointer;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
     gap: 17px;
 
     color: white;
+
     transition: filter 0.3s;
+
     -webkit-tap-highlight-color: transparent;
 }
 
 .planet-sphere {
     display: block;
+
     width: var(--size);
     height: var(--size);
+
     border-radius: 50%;
+
     position: relative;
 
     background:
-        radial-gradient(circle at 30% 25%,
-            var(--light), transparent 24%),
-        radial-gradient(circle at 65% 70%,
-            var(--dark), transparent 60%),
+        radial-gradient(
+            circle at 30% 25%,
+            var(--light),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 65% 70%,
+            var(--dark),
+            transparent 60%
+        ),
         var(--color);
 
     box-shadow:
@@ -168,9 +238,12 @@ body::before {
 
 .planet-sphere::after {
     content: "";
+
     position: absolute;
     inset: 0;
+
     border-radius: 50%;
+
     background: linear-gradient(
         120deg,
         transparent 40%,
@@ -178,6 +251,104 @@ body::before {
         transparent 70%
     );
 }
+
+
+/* =================================
+   SAKAAR - REALISTIC PLANET
+================================= */
+
+.sakaar .planet-sphere {
+    background-image:
+        linear-gradient(
+            110deg,
+            rgba(255, 190, 100, 0.08) 0%,
+            transparent 35%,
+            rgba(0, 0, 0, 0.65) 100%
+        ),
+        url("./assets/galaxy/planets/sakaar.png");
+
+    background-size:
+    100% 100%,
+    160% auto;
+
+    background-position:
+        center,
+        center;
+    
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset -18px -12px 28px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(255, 130, 50, 0.35);
+}
+
+
+/* =================================
+   XANDAR - REALISTIC PLANET
+================================= */
+
+.xandar .planet-sphere {
+    background-image:
+        linear-gradient(
+            110deg,
+            rgba(120, 210, 255, 0.08),
+            transparent 40%,
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("./assets/galaxy/planets/xandar.png");
+
+    background-size:
+        100% 100%,
+        160% auto;
+
+    background-position: center, center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset -15px -12px 25px rgba(0, 0, 0, 0.4),
+        0 0 35px rgba(0, 160, 255, 0.4);
+}
+
+.xandar .planet-sphere::after {
+    background:
+        radial-gradient(
+            circle at 25% 22%,
+            rgba(200, 240, 255, 0.2),
+            transparent 40%
+        ),
+        linear-gradient(
+            110deg,
+            transparent 40%,
+            rgba(0, 0, 0, 0.55)
+        );
+
+    border-radius: 50%;
+}
+
+
+/* Natural atmospheric lighting */
+
+.sakaar .planet-sphere::after {
+    background:
+        radial-gradient(
+            circle at 25% 22%,
+            rgba(255, 225, 170, 0.22),
+            transparent 38%
+        ),
+        linear-gradient(
+            110deg,
+            transparent 35%,
+            rgba(0, 0, 0, 0.12) 65%,
+            rgba(0, 0, 0, 0.65) 100%
+        );
+
+    border-radius: 50%;
+}
+
 
 .planet:hover .planet-sphere {
     box-shadow:
@@ -187,11 +358,16 @@ body::before {
 
 .planet-label {
     font-family: 'IBM Plex Mono', monospace;
+
     font-size: 11px;
     letter-spacing: 3px;
+
     color: #cbd9ed;
+
     text-shadow: 0 0 10px var(--glow);
+
     opacity: 0.8;
+
     transition: 0.3s;
 }
 
@@ -200,12 +376,25 @@ body::before {
     opacity: 1;
 }
 
+
+/* PLANET FLOAT ANIMATION */
+
 @keyframes planetFloat {
-    from { transform: translateY(-8px); }
-    to { transform: translateY(8px); }
+
+    from {
+        transform: translateY(-8px);
+    }
+
+    to {
+        transform: translateY(8px);
+    }
+
 }
 
-/* PLANET POSITIONS */
+
+/* =================================
+   PLANET POSITIONS
+================================= */
 
 .sakaar {
     --size: 135px;
@@ -273,130 +462,189 @@ body::before {
     top: 670px;
 }
 
-/* INFORMATION PANEL */
+
+/* =================================
+   PLANET INFORMATION PANEL
+================================= */
 
 .planet-panel {
     position: absolute;
+
     z-index: 30;
+
     bottom: 100px;
     left: 50%;
+
     transform: translateX(-50%) translateY(20px);
 
     width: min(90%, 360px);
+
     padding: 25px;
 
     background: rgba(10,20,36,0.95);
+
     border: 1px solid rgba(0,229,255,0.3);
     border-radius: 12px;
 
     opacity: 0;
     visibility: hidden;
+
     transition: 0.3s;
+
     backdrop-filter: blur(15px);
 }
 
 .planet-panel.active {
     opacity: 1;
     visibility: visible;
+
     transform: translateX(-50%) translateY(0);
 }
 
 .planet-panel h2 {
     margin-top: 12px;
+
     color: var(--cyan);
     font-size: 26px;
 }
 
 .planet-panel p:not(.eyebrow) {
     margin-top: 10px;
+
     color: var(--muted);
     font-size: 12px;
     line-height: 1.7;
 }
 
+
+/* CLOSE BUTTON */
+
 .close-panel {
     position: absolute;
+
     top: 10px;
     right: 15px;
+
     border: none;
     background: transparent;
+
     color: white;
     font-size: 23px;
+
     cursor: pointer;
 }
+
+
+/* EXPLORE BUTTON */
 
 .explore-btn {
     width: 100%;
+
     margin-top: 20px;
     padding: 13px;
+
     background: var(--cyan);
+
     border: none;
     color: #07111c;
+
     font-weight: 700;
+
     border-radius: 5px;
+
     cursor: pointer;
 }
 
-/* ZOOM CONTROLS */
+
+/* =================================
+   ZOOM CONTROLS
+================================= */
 
 .controls {
     position: absolute;
+
     right: 35px;
     bottom: 100px;
+
     z-index: 20;
 
     display: flex;
     flex-direction: column;
+
     gap: 10px;
 }
 
 .controls button {
     width: 42px;
     height: 42px;
+
     background: rgba(15,30,50,0.9);
+
     border: 1px solid #29445e;
     border-radius: 7px;
+
     color: var(--cyan);
     font-size: 22px;
+
     cursor: pointer;
 }
 
-/* INSTRUCTION */
+
+/* =================================
+   INSTRUCTIONS
+================================= */
 
 .instruction {
     position: absolute;
+
     bottom: 42px;
     left: 50%;
+
     transform: translateX(-50%);
 
+    z-index: 5;
+
     color: #8295ad;
+
     font-family: 'IBM Plex Mono', monospace;
     font-size: 9px;
     letter-spacing: 2px;
+
     white-space: nowrap;
 }
 
-/* FOOTER */
+
+/* =================================
+   FOOTER
+================================= */
 
 footer {
     position: absolute;
+
     bottom: 15px;
     left: 5%;
     right: 5%;
+
+    z-index: 5;
 
     display: flex;
     justify-content: space-between;
 
     color: #61748d;
+
     font-family: 'IBM Plex Mono', monospace;
     font-size: 8px;
     letter-spacing: 1px;
+
     pointer-events: none;
 }
 
-/* MOBILE */
 
-@media(max-width: 600px) {
+/* =================================
+   MOBILE RESPONSIVENESS
+================================= */
+
+@media (max-width: 600px) {
 
     .topbar {
         padding: 20px 5%;
@@ -431,6 +679,7 @@ footer {
 
     .instruction {
         bottom: 55px;
+
         font-size: 8px;
         letter-spacing: 1px;
     }
@@ -438,48 +687,18 @@ footer {
     footer {
         font-size: 7px;
     }
-}
 
-@media(prefers-reduced-motion: reduce) {
-    .planet-sphere {
-        animation: none;
-    }
 }
 
 
 /* =================================
-   CINEMATIC GALAXY BACKGROUND
+   REDUCED MOTION
 ================================= */
 
-body {
-    background-color: #02040b;
+@media (prefers-reduced-motion: reduce) {
 
-    background-image:
-        linear-gradient(
-            rgba(2, 5, 15, 0.48),
-            rgba(2, 5, 15, 0.62)
-        ),
-        url("./assets/galaxy/backgrounds/nebula-overlay.jpg"),
-        url("./assets/galaxy/backgrounds/deep-space.jpg");
+    .planet-sphere {
+        animation: none;
+    }
 
-    background-position:
-        center,
-        center center,
-        center center;
-
-    background-size:
-        cover,
-        cover,
-        cover;
-
-    background-repeat: no-repeat;
-
-    background-attachment: fixed;
-
-    background-blend-mode:
-        normal,
-        screen,
-        normal;
 }
-
-

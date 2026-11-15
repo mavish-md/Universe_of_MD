@@ -1,40 +1,69 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="theme-color" content="#02040b">
+
     <title>MD's World | Galaxy Explorer</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Galaxy Stylesheet -->
     <link rel="stylesheet" href="galaxy.css">
 </head>
 
 <body>
 
-    <!-- Animated star background -->
+
+
+
+    <!-- =================================
+         ANIMATED STARFIELD
+    ================================== -->
+
     <canvas id="starCanvas"></canvas>
 
-    <!-- Main navigation -->
+
+    <!-- =================================
+         MAIN NAVIGATION
+    ================================== -->
+
     <header class="topbar">
 
-        <div class="logo">MD<span>.</span></div>
+        <div class="logo">
+            MD<span>.</span>
+        </div>
 
         <div class="system-status">
             <span class="status-dot"></span>
             GALAXY ONLINE
         </div>
-      
+
     </header>
 
-    <!-- Introduction -->
+
+    <!-- =================================
+         INTRODUCTION
+    ================================== -->
+
     <section class="intro">
 
-        <p class="eyebrow">WELCOME TO THE UNKNOWN</p>
+        <p class="eyebrow">
+            WELCOME TO THE UNKNOWN
+        </p>
 
         <h1>
             Welcome aboard,
-            <span id="visitorName">Explorer</span>.
+            <span id="visitorName">Explorer</span>!
         </h1>
 
         <p>
@@ -44,89 +73,134 @@
 
     </section>
 
-    <!-- Galaxy viewport -->
+
+    <!-- =================================
+         GALAXY VIEWPORT
+    ================================== -->
+
     <main class="galaxy-viewport" id="viewport">
 
         <div class="galaxy-world" id="galaxyWorld">
 
-            <!-- Planet 1 -->
+
+            <!-- PLANET 1 : SAKAAR -->
+
             <button class="planet sakaar"
                 data-name="Sakaar"
                 data-description="A chaotic world full of unexpected adventures."
                 data-destination="sakaar.html">
 
                 <span class="planet-sphere"></span>
-                <span class="planet-label">SAKAAR</span>
+
+                <span class="planet-label">
+                    SAKAAR
+                </span>
 
             </button>
 
-            <!-- Planet 2 -->
+
+            <!-- PLANET 2 : XANDAR -->
+
             <button class="planet xandar"
                 data-name="Xandar"
                 data-description="Discover the home of the Nova Corps."
                 data-destination="xandar.html">
 
                 <span class="planet-sphere"></span>
-                <span class="planet-label">XANDAR</span>
+
+                <span class="planet-label">
+                    XANDAR
+                </span>
 
             </button>
 
-            <!-- Planet 3 -->
+
+            <!-- PLANET 3 : TITAN -->
+
             <button class="planet titan"
                 data-name="Titan"
                 data-description="A mysterious world of cosmic history."
                 data-destination="titan.html">
 
                 <span class="planet-sphere"></span>
-                <span class="planet-label">TITAN</span>
+
+                <span class="planet-label">
+                    TITAN
+                </span>
 
             </button>
 
-            <!-- Planet 4 -->
+
+            <!-- PLANET 4 : VORMIR -->
+
             <button class="planet vormir"
                 data-name="Vormir"
                 data-description="A distant and mysterious destination."
                 data-destination="vormir.html">
 
                 <span class="planet-sphere"></span>
-                <span class="planet-label">VORMIR</span>
+
+                <span class="planet-label">
+                    VORMIR
+                </span>
 
             </button>
 
-            <!-- Planet 5 -->
+
+            <!-- PLANET 5 : EGO -->
+
             <button class="planet ego"
                 data-name="Ego"
                 data-description="A celestial mystery awaits discovery."
                 data-destination="ego.html">
 
                 <span class="planet-sphere"></span>
-                <span class="planet-label">EGO</span>
+
+                <span class="planet-label">
+                    EGO
+                </span>
 
             </button>
 
-            <!-- Planet 6 -->
+
+            <!-- PLANET 6 : KNOWHERE -->
+
             <button class="planet knowhere"
                 data-name="Knowhere"
                 data-description="A remarkable destination at the edge of the galaxy."
                 data-destination="knowhere.html">
 
                 <span class="planet-sphere"></span>
-                <span class="planet-label">KNOWHERE</span>
+
+                <span class="planet-label">
+                    KNOWHERE
+                </span>
 
             </button>
+
 
         </div>
 
     </main>
 
-    <!-- Planet information -->
+
+    <!-- =================================
+         PLANET INFORMATION PANEL
+    ================================== -->
+
     <div class="planet-panel" id="planetPanel">
 
-        <button class="close-panel" id="closePanel">×</button>
+        <button class="close-panel" id="closePanel">
+            ×
+        </button>
 
-        <p class="eyebrow">DESTINATION IDENTIFIED</p>
+        <p class="eyebrow">
+            DESTINATION IDENTIFIED
+        </p>
 
-        <h2 id="panelName">Planet Name</h2>
+        <h2 id="panelName">
+            Planet Name
+        </h2>
 
         <p id="panelDescription"></p>
 
@@ -136,25 +210,62 @@
 
     </div>
 
-    <!-- Controls -->
+
+    <!-- =================================
+         GALAXY CONTROLS
+    ================================== -->
+
     <div class="controls">
 
-        <button id="zoomIn">+</button>
-        <button id="zoomOut">−</button>
-        <button id="resetView">⌖</button>
+        <button id="zoomIn" aria-label="Zoom in">
+            +
+        </button>
+
+        <button id="zoomOut" aria-label="Zoom out">
+            −
+        </button>
+
+        <button id="resetView" aria-label="Reset galaxy view">
+            ⌖
+        </button>
 
     </div>
+
+
+    <!-- =================================
+         INSTRUCTIONS
+    ================================== -->
 
     <div class="instruction">
-        DRAG TO EXPLORE &nbsp; • &nbsp; SCROLL TO ZOOM
+
+        DRAG TO EXPLORE
+        &nbsp; • &nbsp;
+        SCROLL TO ZOOM
+
     </div>
 
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
     <footer>
+
         <span>MD'S WORLD</span>
-        <span>THE UNIVERSE IS YOURS TO EXPLORE</span>
+
+        <span>
+            THE UNIVERSE IS YOURS TO EXPLORE
+        </span>
+
     </footer>
+
+
+    <!-- =================================
+         GALAXY JAVASCRIPT
+    ================================== -->
 
     <script src="galaxy.js"></script>
 
 </body>
+
 </html>

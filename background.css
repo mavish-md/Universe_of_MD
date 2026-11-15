@@ -1,0 +1,259 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #02040a;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+
+/* =========================
+   MAIN SPACE BACKGROUND
+========================= */
+
+.space-background {
+
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        url("images/deep-space.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: -3;
+
+}
+
+
+/* =========================
+   NEBULA LAYER
+========================= */
+
+.nebula-background {
+
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        url("images/nebula-overlay.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.48;
+
+    mix-blend-mode: screen;
+
+    z-index: -2;
+
+}
+
+
+/* =========================
+   DARK CINEMATIC OVERLAY
+========================= */
+
+.dark-overlay {
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.55)
+        ),
+
+        linear-gradient(
+            0deg,
+            rgba(2, 5, 15, 0.65),
+            transparent 60%
+        );
+
+    z-index: -1;
+
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.content {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.eyebrow {
+
+    color: #00d9ff;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+
+}
+
+
+h1 {
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: clamp(40px, 8vw, 90px);
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 20px rgba(0, 200, 255, 0.3);
+
+}
+
+h1 span {
+    color: #00d9ff;
+}
+
+
+.subtitle {
+
+    margin-top: 20px;
+
+    color: #b9c8dc;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =========================
+   SYSTEM STATUS
+========================= */
+
+.system-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 50px;
+
+    color: #00e5ff;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+.status-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00e5ff;
+
+    box-shadow:
+        0 0 12px #00e5ff;
+
+    animation: pulse 1.5s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+}
+
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+
+    .nebula-background {
+
+        background-position: center;
+
+        opacity: 0.38;
+
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+}
